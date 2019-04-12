@@ -44,6 +44,8 @@ while 1:
             print("reading data")
             data = conn.recv(65536)
             str_data = data.decode()
+            print("data")
+            print(data)
             f.write(data)
             img += data.decode()
             size += len(str_data)
