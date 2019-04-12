@@ -2,7 +2,7 @@ import socket
 import sys
 
 HOST = '' #all available interfaces
-PORT = 3078
+PORT = 3333
 
 #1. open Socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

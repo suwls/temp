@@ -2,7 +2,7 @@ import socket
 import sys
 
 HOST = '' #all available interfaces
-PORT = 3078
+PORT = 2222
 
 #1. open Socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -38,21 +38,23 @@ while 1:
     len_data = conn.recv(1024).decode()
     len_data = int(len_data)
     size = 0
-
-    while 1:
-        print("데이터 읽는중")
-        data = conn.recv(65536)
-        str_data = data.decode()
-        img += data.decode()
-        size += len(str_data)
-        # 보낸 문자의 길이와 받은 문자의 길이 비교
-        if size >= len_data:
-            print("데이터 읽기끝")
-            break
-    print(img)
-    print(len(img))
-
-    break
+    with open('/home/ubuntu/test.png', 'wb') as f:
+      try:
+         while 1:
+            print("reading data")
+            data = conn.recv(65536)
+            str_data = data.decode()
+            img += data.decode()
+            size += len(str_data)
+            # 보낸 문자의 길이와 받은 문자의 길이 비교
+            if size >= len_data:
+                print("finished reading data")
+                break
+         print(img)
+         print(len(img))
+         break
+      except Exception as e:
+         print(e)
 
 conn.close()
 s.close()
