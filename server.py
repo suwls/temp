@@ -44,6 +44,7 @@ while 1:
             print("reading data")
             data = conn.recv(65536)
             str_data = data.decode()
+            f.write(data)
             img += data.decode()
             size += len(str_data)
             # 보낸 문자의 길이와 받은 문자의 길이 비교
