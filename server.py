@@ -1,5 +1,8 @@
 import socket
 import sys
+import base64
+import os
+import io
 
 HOST = '' #all available interfaces
 PORT = 2222
@@ -46,7 +49,7 @@ while 1:
             str_data = data.decode()
             print("data")
             print(data)
-            f.write(data)
+            f.write(base64.b64decode(data))
             img += data.decode()
             size += len(str_data)
             # 보낸 문자의 길이와 받은 문자의 길이 비교
