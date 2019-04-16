@@ -1,4 +1,4 @@
-# temp# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*- 
 
 import socket
 import sys
@@ -6,7 +6,7 @@ import time
 import base64
 
 HOST = '' #all available interfaces
-PORT = 3078
+PORT = 9000 
 
 #1. open Socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -44,7 +44,7 @@ while 1:
         print("type size", type(size))
         
         while 1:
-            print("데이터 읽는중")
+            print("Data Reading")
             data = conn.recv(65536)
             str_data = data.decode()
             img += data.decode()
@@ -52,11 +52,12 @@ while 1:
             size += len(str_data)
             print(size, type(size), len_data, type(len_data))
             if size == len_data:
-                print("데이터 읽기끝")
+                print("Finished Data Reading")
                 break
         #print(img)
         print(i)
-        with open('test_'+str(i)+'.png', 'wb') as f:
+
+        with open('/root/openface/temp/test_'+str(i)+'.png', 'wb') as f:
             f.write(base64.b64decode(img))
         time.sleep(0.1)
     break 
