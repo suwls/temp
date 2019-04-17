@@ -6,7 +6,7 @@ import time
 import base64
 
 HOST = '' #all available interfaces
-PORT = 9000 
+PORT = 2222 
 
 #1. open Socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
