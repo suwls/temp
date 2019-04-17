@@ -5,7 +5,7 @@ import os
 import io
 
 HOST = '' #all available interfaces
-PORT = 2222
+PORT = 9000 
 
 #1. open Socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -41,7 +41,7 @@ while 1:
     len_data = conn.recv(1024).decode()
     len_data = int(len_data)
     size = 0
-    with open('/home/ubuntu/temp/'+'guest'+'.png', 'wb') as f:
+    with open('/root/openface/temp/'+'guest'+'.png', 'wb') as f:
       try:
          while 1:
             print("reading data")
