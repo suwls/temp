@@ -5,6 +5,13 @@ import sys
 import time
 import base64
 
+
+
+
+
+
+
+import subprocess
 HOST = '' #all available interfaces
 PORT = 2222 
 
@@ -60,6 +67,7 @@ while 1:
         with open('/root/openface/temp/test_'+str(i)+'.png', 'wb') as f:
             f.write(base64.b64decode(img))
         time.sleep(0.1)
-    break 
+    subprocess.run(['/root/openface/demos/classifier_test.py infer /root/openface/embedding/us/classifier.pkl /root/openface/temp/test_1.png']
+#    break 
 conn.close()
 s.close()

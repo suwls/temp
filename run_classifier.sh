@@ -3,18 +3,22 @@
 
 
 
-echo "variable test" 
+echo "Face Recognition Start"
+
+#for i in 1 2 3
+#do 
+
+#	a=$(/root/openface/demos/classifier_test.py infer /root/openface/embedding/us/classifier.pkl /root/openface/temp/test_$i.png)
+
+#	echo $a
+#done
+python3 /root/openface/temp/receiveImage2.py
 
 
-a=$(/root/openface/demos/classifier_test.py infer /root/openface/embedding/us/classifier.pkl /root/openface/test/us/test1.jpeg)
+echo "Face Recognition Finished"
 
 
 
+echo "Recognition Result"
 
-echo "a variable running finished"
-# /root/openface/demos/classifier_test.py infer /root/openface/embedding/us/classifier.pkl /root/openface/test/us/test1.jpeg
-#echo "just run"
-
-echo "print a"
-echo ${a}
 echo $a
