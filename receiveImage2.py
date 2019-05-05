@@ -53,11 +53,17 @@ while 1:
         with open('/root/openface/temp/test_'+str(i)+'.jpeg', 'wb') as f:
             f.write(base64.b64decode(img))
         time.sleep(0.1)
-    break   
+
+    break
+
 res_list = {}
-for j in range(1,4): 
+
+for j in range(1,4):
+    # start face recognigionc
     res=subprocess.check_output(['/root/openface/demos/classifier_test.py infer /root/openface/embedding/us/classifier.pkl /root/openface/temp/test_'+str(j)+'.jpeg'], universal_newlines=True,shell=True)
     print("res: {}".format(res))
+    
+    # store recognition result
     name, accuracy = res.split(':')
     accuracy = float(accuracy)
 
@@ -76,5 +82,6 @@ if not res_list:
 else:
     res_list = sorted(res_list.items(), key = lambda x: (x[1][1], x[1][0]), reverse = True)
     print("final res: {}".format(res_list[0][0]))
+
 conn.close()
 s.close()
