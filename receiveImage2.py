@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+# -*- coding: utf-8 -*- 
+
+>>>>>>> 48660c0631d428ea80163f9e19505d5a2365afbc
 import socket
 import sys
 import time
@@ -32,6 +37,7 @@ while 1:
     print ('Connected with ' + addr[0] + ':' + str(addr[1]))
 
     id = conn.recv(255).decode()
+<<<<<<< HEAD
     print('id : *' + id+ '*')
 
     timestamp = conn.recv(26).decode()
@@ -86,12 +92,44 @@ while 1:
             with open('/root/openface/temp/test_'+str(i)+'.jpeg', 'wb') as f:
                 f.write(base64.b64decode(img))
             time.sleep(0.1)
+=======
+    timestamp = conn.recv(255).decode()
+    print(id)
+    print(timestamp)
+
+    for i in range(2):
+        #5. Read/Send
+        img = ""
+        len_data = conn.recv(1024).decode()
+        len_data = int(len_data)
+        size = 0
+
+        print("Data Reading") 
+
+        while 1:
+            data = conn.recv(65536)
+            str_data = data.decode()
+            img += data.decode()
+            size += len(str_data)
+            if size == len_data:
+                print("Finished Data Reading")
+                break
+
+        with open('/root/openface/temp/test_'+str(i)+'.jpeg', 'wb') as f:
+            f.write(base64.b64decode(img))
+        time.sleep(0.1)
+
+>>>>>>> 48660c0631d428ea80163f9e19505d5a2365afbc
     break
 
 res_list = {}
 
+<<<<<<< HEAD
 if(result == '1'):
     for j in range(1,2):
+=======
+for j in range(1):
+>>>>>>> 48660c0631d428ea80163f9e19505d5a2365afbc
     # start face recognigionc
         res=subprocess.check_output(['/root/openface/demos/classifier_test.py infer /root/openface/users/'+id+'/embedding/classifier.pkl /root/openface/temp/test_'+str(j)+'.jpeg'], universal_newlines=True,shell=True)
         print("res: {}".format(res))
